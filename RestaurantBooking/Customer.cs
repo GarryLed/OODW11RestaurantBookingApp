@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace RestaurantBooking
 {
-    internal class Customer
+    public class Customer
     {
+        // properties 
+        public int CustomerId { get; set; } // customer id 
+        public string Name { get; set; } // Customer name 
+        public string ContactNumber { get; set; } // Contact number 
+
+        // one to many relationship 
+        public virtual List<Booking> Bookings { get; set; }
+
+        // override tostring method 
+        public override string ToString()
+        {
+            return $"{Name}  {ContactNumber}";
+        }
     }
 }

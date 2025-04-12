@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace RestaurantBooking
 {
-    internal class Booking
+    public class Booking
     {
+        // properties 
+        public int BookingId { get; set; } // booking id 
+        public DateTime BookingDate { get; set; } // booking date 
+        public int NoOfParticipants { get; set; } // number of participants 
+
+        // foreign key and relationship 
+        public int CustomerId { get; set; } // foreign key for customer table 
+        public virtual Customer Customer { get; set; }
+
+        // override string method 
+        public override string ToString()
+        {
+            return $"{Customer.Name}, Party of {NoOfParticipants}";
+        }
     }
 }
