@@ -27,39 +27,6 @@ namespace RestaurantBooking
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-           LoadInitialData(); // load the initial data 
-        }
-
-        // load up initial data on window loaded 
-        private void LoadInitialData()
-        {
-            using (var db = new RestaurantData())
-            {
-                var bookings = from b in db.Bookings
-                               where b.BookingDate == DateTime.MinValue
-                               orderby b.BookingDate descending
-                               select new
-                               {
-                                   Name = b.Customer.Name,
-                                   ContactNumber = b.Customer.ContactNumber,
-                                   BookingDate = b.BookingDate,
-                                   NoOfParticipants = b.NoOfParticipants
-
-                               };
-
-                // display data 
-                foreach (var booking in bookings) 
-                {
-                    Console.WriteLine(booking.ToString());
-                }
-
-                lbxViewBookings.ItemsSource = bookings;
-            }
-        }
-
-        
         // customer search button 
         // Reads info from the screen and searches for any matching customers 
         private void btnSearchCustomer_Click(object sender, RoutedEventArgs e)

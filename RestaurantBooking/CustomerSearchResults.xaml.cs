@@ -59,6 +59,8 @@ namespace RestaurantBooking
             // add details to list box for display 
             tbxName.Text = name;
             tbxNumber.Text = contactNumber;
+            tblkDateOfBooking.Text = $"{bookingDate.ToShortDateString()}";
+            tblkNoOfCustomers.Text = $"{numberOfParticipants.ToString()}";
             
         }
 
@@ -79,8 +81,17 @@ namespace RestaurantBooking
             // save booking 
             Booking booking = new Booking()
             {
-                BookingDate = _bookingDate
+                BookingDate = _bookingDate,
+                NoOfParticipants = _numberOfCustomers,
+                CustomerId = _customerId
+
             };
+
+            // add the booking to the database 
+            db.Bookings.Add(booking);
+            db.SaveChanges();
+
+            MessageBox.Show("Booking was created");
         }
     }
 }

@@ -42,6 +42,7 @@ namespace DatabaseManagement
 
                     // confirmation messages 
                     Console.WriteLine("Added Bookings");
+                    
 
                     // save changes made to database 
                     db.SaveChanges();

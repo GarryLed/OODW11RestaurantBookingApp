@@ -20,7 +20,7 @@ namespace RestaurantBooking
         // override string method 
         public override string ToString()
         {
-            return $" {BookingDate.ToShortDateString()} {Customer.Name}, Party of {NoOfParticipants}";
+            return $"{Customer.Name} ({Customer.ContactNumber}) - Party of {NoOfParticipants}";
         }
     }
 }
