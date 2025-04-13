@@ -20,34 +20,67 @@ namespace RestaurantBooking
     /// </summary>
     public partial class CustomerSearchResults : Window
     {
-        public CustomerSearchResults(string name, string contactNumber, DateTime bookingDate, int numberOfParticipants)
+      
+        
+        RestaurantData db = new RestaurantData(); // create a new instance of the RestaurantData class 
+
+        // properties 
+        private string _customerName, _contactNumber;
+        private int _customerId, _numberOfCustomers;
+        private DateTime _bookingDate; 
+      
+
+        public CustomerSearchResults()
         {
             InitializeComponent();
+        }
 
-            // Display the values in your UI
+        
+
+        public CustomerSearchResults(string name, string contactNumber, DateTime bookingDate, int numberOfParticipants) : this()
+        {
+            _customerName = name;
+            _contactNumber = contactNumber;
+            _bookingDate = bookingDate;
+            _numberOfCustomers = numberOfParticipants;
+
+            // search customers table for existing name 
+            var query = from c in db.Customers
+                        where c.Name.Contains(name)
+                        select c;
+
+            var results = query.ToList();  
+
+            if (results.Count > 0) 
+            {
+                lbxCustomers.ItemsSource = results;
+            }
+
+            // add details to list box for display 
             tbxName.Text = name;
             tbxNumber.Text = contactNumber;
-            tblkDateOfBooking.Text = bookingDate.ToShortDateString();
-            tblkNoOfCustomers.Text = numberOfParticipants.ToString();
+            
         }
 
 
         private void btnCreateBooking_Click(object sender, RoutedEventArgs e)
         {
-            using (var db = new RestaurantData())
+            if (_customerId == 0)
             {
-                var newCustomer = new Customer()
-                {
+                Customer customer = new Customer() { Name = tbxName.Text, ContactNumber = tbxNumber.Text };
 
-                    Name = tbxName.Text, // customer name 
-                    ContactNumber = tbxNumber.Text // customer contact number 
-                };
+                // add new customer to database 
+                db.Customers.Add(customer);
+                db.SaveChanges();
+                _customerId = customer.CustomerId; 
 
-                db.Customers.Add(newCustomer); // add a new customer to database 
-                db.SaveChanges(); // save the changes 
-
-                // update the ui 
             }
+
+            // save booking 
+            Booking booking = new Booking()
+            {
+                BookingDate = _bookingDate
+            };
         }
     }
 }

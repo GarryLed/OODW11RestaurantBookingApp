@@ -9,6 +9,8 @@ namespace RestaurantBooking
     public class Customer
     {
         // properties 
+
+        
         public int CustomerId { get; set; } // customer id 
         public string Name { get; set; } // Customer name 
         public string ContactNumber { get; set; } // Contact number 

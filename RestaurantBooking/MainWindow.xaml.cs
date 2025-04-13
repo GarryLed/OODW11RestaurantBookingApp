@@ -27,17 +27,39 @@ namespace RestaurantBooking
             InitializeComponent();
         }
 
-        // update ui with refreshing screen 
-        public void RefreshScreen()
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            lbxViewBookings.ItemsSource = null;
-            tblkBookings.Text = "0";
-            tblkAvailability.Text = "40";
-
-            tbxEnterCustomerName.Text = "Customer Name";
-            tbxGetCustomerNo.Text = "Contact Number";
-            tbxNoOfCustomers.Text = "Number of Customers";
+           LoadInitialData(); // load the initial data 
         }
+
+        // load up initial data on window loaded 
+        private void LoadInitialData()
+        {
+            using (var db = new RestaurantData())
+            {
+                var bookings = from b in db.Bookings
+                               where b.BookingDate == DateTime.MinValue
+                               orderby b.BookingDate descending
+                               select new
+                               {
+                                   Name = b.Customer.Name,
+                                   ContactNumber = b.Customer.ContactNumber,
+                                   BookingDate = b.BookingDate,
+                                   NoOfParticipants = b.NoOfParticipants
+
+                               };
+
+                // display data 
+                foreach (var booking in bookings) 
+                {
+                    Console.WriteLine(booking.ToString());
+                }
+
+                lbxViewBookings.ItemsSource = bookings;
+            }
+        }
+
+        
         // customer search button 
         // Reads info from the screen and searches for any matching customers 
         private void btnSearchCustomer_Click(object sender, RoutedEventArgs e)
@@ -66,6 +88,7 @@ namespace RestaurantBooking
         }
 
         // delete button
+        // deletes a booking from database 
         private void btnDeleteBooking_Click(object sender, RoutedEventArgs e)
         {
             Booking bookingToDelete = lbxViewBookings.SelectedItem as Booking; // check the object that is being selected 
@@ -92,14 +115,14 @@ namespace RestaurantBooking
        
 
         // shows booking for a selected date 
-        private void ViewBooking(object sender, SelectedCellsChangedEventArgs e)
+        private void dpShowBookings_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            //DateTime selectedDate = dbShowBookings.SelectedDate.Value;
+            DateTime selectedDate = dpShowBookings.SelectedDate.Value;
 
-            //if (selectedDate != null) 
-            //{
-              //  SearchByDate(selectedDate); // calls the search by date method 
-           // }
+            if (selectedDate != null) 
+            {
+              SearchByDate(selectedDate); // calls the search by date method 
+             }
         }
 
         // search database for a booksing on a specified date 
@@ -145,27 +168,16 @@ namespace RestaurantBooking
 
         }
 
-        // deletes a booking from database 
-        public void DeleteBooking(object sender, RoutedEventArgs e) 
+        // update ui with refreshing screen 
+        public void RefreshScreen()
         {
-            Booking bookingToDelete = lbxViewBookings.SelectedItem as Booking; // check the object that is being selected 
+            lbxViewBookings.ItemsSource = null;
+            tblkBookings.Text = "0";
+            tblkAvailability.Text = "40";
 
-            if (bookingToDelete != null) 
-            {
-                try
-                {
-                    db.Bookings.Remove(bookingToDelete);
-                    db.SaveChanges();
-                    MessageBox.Show("Booking deleted");
-
-                    // 
-                    //SearchByDate(dbShowBookings.SelectedItem.Value);   
-                }
-                catch ( Exception ex ) 
-                {
-                    Console.WriteLine("Sorry, error connecting to the database " + ex.Message);
-                }
-            }
+            tbxEnterCustomerName.Text = "Customer Name";
+            tbxGetCustomerNo.Text = "Contact Number";
+            tbxNoOfCustomers.Text = "Number of Customers";
         }
 
        

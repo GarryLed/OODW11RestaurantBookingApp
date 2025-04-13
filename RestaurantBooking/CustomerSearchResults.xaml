@@ -10,6 +10,7 @@
         <Label Content="Matching Customers" HorizontalAlignment="Left" Margin="24,27,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Create New Customer" HorizontalAlignment="Left" Margin="400,27,0,0" VerticalAlignment="Top" FontSize="18"/>
         <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="24,84,421,115"/>
+        <ListBox x:Name="lbxCustomers" d:ItemsSource="{d:SampleData ItemCount=5}" Height="NaN" Margin="24,84,421,115" Width="NaN"/>
         <Button x:Name="btnCreateBooking" Content="Create Booking" HorizontalAlignment="Left" Margin="532,375,0,0" VerticalAlignment="Top" Height="32" Width="145" Click="btnCreateBooking_Click"/>
         <TextBox x:Name="tbxName" HorizontalAlignment="Left" Margin="412,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280"/>
         <TextBox x:Name="tbxNumber" HorizontalAlignment="Left" Margin="412,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280"/>

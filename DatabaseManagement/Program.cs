@@ -54,7 +54,7 @@ namespace DatabaseManagement
             }
             catch (Exception ex) 
             {
-                Console.WriteLine("Sorry an erroroccured when connecting to the database: " + ex.Message);
+                Console.WriteLine("Sorry an error occured when connecting to the database: " + ex.Message);
             }
         }
     }
