@@ -10,7 +10,7 @@
         <Label Content="Booking Details" HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="New Booking" HorizontalAlignment="Left" Margin="560,24,0,0" VerticalAlignment="Top" FontSize="18"/>
         <DatePicker x:Name="dpShowBookings" HorizontalAlignment="Left" Margin="182,34,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="dpNewBookings" HorizontalAlignment="Left" Margin="567,79,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dpNewBookingsDate" HorizontalAlignment="Left" Margin="567,79,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="lbxViewBookings" d:ItemsSource="{d:SampleData ItemCount=5}" Height="NaN" Margin="26,91,280,73" Width="NaN"/>
         <TextBox x:Name="tbxNoOfCustomers" HorizontalAlignment="Left" Margin="567,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Text="Number of Customers"/>
         <TextBox x:Name="tbxEnterCustomerName" HorizontalAlignment="Left" Margin="567,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Text="Customer Name"/>

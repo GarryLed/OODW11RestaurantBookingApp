@@ -50,6 +50,30 @@ namespace RestaurantBooking
 
         }
 
+        // Reads info from the screen and searches for any matching customers 
+        public void CustomerSearch(object sender, RoutedEventArgs e)
+        {
+            // get the data from the screen 
+            string customerName = tbxEnterCustomerName.Text;
+            string contactNumber = tbxGetCustomerNo.Text;
+
+            DateTime selectedDate; 
+
+            if (dpNewBookingsDate.SelectedDate.HasValue)// check that the date was selected 
+            {
+                selectedDate = dpNewBookingsDate.SelectedDate.Value; // set the variable "selectedDate" to the value of the date 
+                int.TryParse(tbxNoOfCustomers.Text, out int numberOfCustomers); // validate input and output number of customers as an int 
+
+                // create a new customer search results window 
+                
+
+                // create a link between child screen and main 
+
+
+                // display the results to the new screen 
+            }
+        }
+
         // shows booking for a selected date 
         private void ViewBooking(object sender, SelectedCellsChangedEventArgs e)
         {
@@ -107,7 +131,24 @@ namespace RestaurantBooking
         // deletes a booking from database 
         public void DeleteBooking(object sender, RoutedEventArgs e) 
         {
-            
+            Booking bookingToDelete = lbxViewBookings.SelectedItem as Booking; // check the object that is being selected 
+
+            if (bookingToDelete != null) 
+            {
+                try
+                {
+                    db.Bookings.Remove(bookingToDelete);
+                    db.SaveChanges();
+                    MessageBox.Show("Booking deleted");
+
+                    // 
+                    //SearchByDate(dbShowBookings.SelectedItem.Value);   
+                }
+                catch ( Exception ex ) 
+                {
+                    Console.WriteLine("Sorry, error connecting to the database " + ex.Message);
+                }
+            }
         }
 
        

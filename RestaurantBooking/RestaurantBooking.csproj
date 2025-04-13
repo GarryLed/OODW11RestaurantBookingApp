@@ -65,7 +65,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomerServiceWindow.xaml.cs">
+      <DependentUpon>CustomerServiceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RestaurantData.cs" />
+    <Page Include="CustomerServiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
