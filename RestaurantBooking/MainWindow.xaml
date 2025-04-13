@@ -11,18 +11,18 @@
         <Label Content="New Booking" HorizontalAlignment="Left" Margin="560,24,0,0" VerticalAlignment="Top" FontSize="18"/>
         <DatePicker x:Name="dpShowBookings" HorizontalAlignment="Left" Margin="182,34,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="dpNewBookings" HorizontalAlignment="Left" Margin="567,79,0,0" VerticalAlignment="Top"/>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Height="NaN" Margin="26,91,280,73" Width="NaN"/>
-        <TextBox x:Name="tbxNoOfCustomers" HorizontalAlignment="Left" Margin="567,134,0,0" TextWrapping="Wrap" Text="Number of Customers" VerticalAlignment="Top" Width="164" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="tbxEnterCustomerName" HorizontalAlignment="Left" Margin="567,189,0,0" TextWrapping="Wrap" Text="Customer Name" VerticalAlignment="Top" Width="164" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="tbxGetCustomerNo" HorizontalAlignment="Left" Margin="567,249,0,0" TextWrapping="Wrap" Text="Contact Number" VerticalAlignment="Top" Width="164" TextChanged="TextBox_TextChanged"/>
+        <ListBox x:Name="lbxViewBookings" d:ItemsSource="{d:SampleData ItemCount=5}" Height="NaN" Margin="26,91,280,73" Width="NaN"/>
+        <TextBox x:Name="tbxNoOfCustomers" HorizontalAlignment="Left" Margin="567,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Text="Number of Customers"/>
+        <TextBox x:Name="tbxEnterCustomerName" HorizontalAlignment="Left" Margin="567,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Text="Customer Name"/>
+        <TextBox x:Name="tbxGetCustomerNo" HorizontalAlignment="Left" Margin="567,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Text="Customer Number"/>
         <Button x:Name="btnSearchCustomer" Content="Customer Search" HorizontalAlignment="Left" Margin="592,320,0,0" VerticalAlignment="Top" Width="114" Click="btnSearchCustomer_Click"/>
         <Button x:Name="btnDeleteBooking" Content="Delete Booking" HorizontalAlignment="Left" Margin="385,398,0,0" VerticalAlignment="Top" Width="114" Click="btnDeleteBooking_Click"/>
         <Label Content="Capacity:" HorizontalAlignment="Left" Margin="26,392,0,0" VerticalAlignment="Top"/>
         <Label Content="Bookings:" HorizontalAlignment="Left" Margin="136,392,0,0" VerticalAlignment="Top"/>
         <Label Content="Available:" HorizontalAlignment="Left" Margin="236,392,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="tblkCapacity" HorizontalAlignment="Left" Margin="93,397,0,0" TextWrapping="Wrap" Text="40" VerticalAlignment="Top" Width="29" RenderTransformOrigin="0.886,1.228"/>
-        <TextBlock x:Name="tblkTotalBookings" HorizontalAlignment="Left" Margin="202,392,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="29" RenderTransformOrigin="2.39,0.497"/>
-        <TextBlock x:Name="tblkAvailability" HorizontalAlignment="Left" Margin="301,392,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="29" RenderTransformOrigin="2.39,0.497"/>
+        <TextBlock x:Name="tblkBookings" HorizontalAlignment="Left" Margin="218,397,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" RenderTransformOrigin="2.39,0.497" Text="0"/>
+        <TextBlock x:Name="tblkAvailability" HorizontalAlignment="Left" Margin="311,397,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" RenderTransformOrigin="2.39,0.497" Text="40"/>
 
     </Grid>
 </Window>

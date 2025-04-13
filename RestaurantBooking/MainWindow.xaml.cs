@@ -27,7 +27,17 @@ namespace RestaurantBooking
             InitializeComponent();
         }
 
+        // update ui with refreshing screen 
+        public void RefreshScreen()
+        {
+            lbxViewBookings.ItemsSource = null;
+            tblkBookings.Text = "0";
+            tblkAvailability.Text = "40";
 
+            tbxEnterCustomerName.Text = "Customer Name";
+            tbxGetCustomerNo.Text = "Contact Number";
+            tbxNoOfCustomers.Text = "Number of Customers";
+        }
         // customer search button 
         private void btnSearchCustomer_Click(object sender, RoutedEventArgs e)
         {
@@ -43,12 +53,12 @@ namespace RestaurantBooking
         // shows booking for a selected date 
         private void ViewBooking(object sender, SelectedCellsChangedEventArgs e)
         {
-            DateTime selectedDate = dbShowBookings.SelectedDate.Value;
+            //DateTime selectedDate = dbShowBookings.SelectedDate.Value;
 
-            if (selectedDate != null) 
-            {
-                SearchByDate(selectedDate); // calls the search by date method 
-            }
+            //if (selectedDate != null) 
+            //{
+              //  SearchByDate(selectedDate); // calls the search by date method 
+           // }
         }
 
         // search database for a booksing on a specified date 
@@ -56,6 +66,7 @@ namespace RestaurantBooking
         {
             try
             {
+                // LINQ for database query 
                 var query = from b in db.Bookings
                             where b.BookingDate == selectedDate
                             select b;
@@ -65,18 +76,22 @@ namespace RestaurantBooking
                 if (results.Count > 0) 
                 {
                    // update list box 
+                   lbxViewBookings.ItemsSource = results; // set the list box items to the results from the database query above 
 
                     // count the number of participants 
+                    int totalParticipants = results.Sum(p => p.NoOfParticipants);
 
                     // update bookings 
+                    tblkBookings.Text = totalParticipants.ToString();   
 
-                    // update abailability 
-
+                    // update abailability (total capacity - total participants) 
+                    tblkAvailability.Text = (CAPACITY - totalParticipants).ToString();
 
                 }
                 else
                 {
-                    // refresh screen 
+                    // refresh screen if no result is found 
+                    RefreshScreen();
                 }
             }
             catch (Exception ex) 
