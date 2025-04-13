@@ -39,25 +39,14 @@ namespace RestaurantBooking
             tbxNoOfCustomers.Text = "Number of Customers";
         }
         // customer search button 
-        private void btnSearchCustomer_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        // delete button
-        private void btnDeleteBooking_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         // Reads info from the screen and searches for any matching customers 
-        public void CustomerSearch(object sender, RoutedEventArgs e)
+        private void btnSearchCustomer_Click(object sender, RoutedEventArgs e)
         {
             // get the data from the screen 
             string customerName = tbxEnterCustomerName.Text;
             string contactNumber = tbxGetCustomerNo.Text;
 
-            DateTime selectedDate; 
+            DateTime selectedDate;
 
             if (dpNewBookingsDate.SelectedDate.HasValue)// check that the date was selected 
             {
@@ -65,14 +54,42 @@ namespace RestaurantBooking
                 int.TryParse(tbxNoOfCustomers.Text, out int numberOfCustomers); // validate input and output number of customers as an int 
 
                 // create a new customer search results window 
-                
+                CustomerSearchResults customerSearchResults = new CustomerSearchResults(customerName, contactNumber,selectedDate, numberOfCustomers);
+
 
                 // create a link between child screen and main 
+                customerSearchResults.Owner = this;
 
-
-                // display the results to the new screen 
+                // display the results to the new screen
+                customerSearchResults.ShowDialog();
             }
         }
+
+        // delete button
+        private void btnDeleteBooking_Click(object sender, RoutedEventArgs e)
+        {
+            Booking bookingToDelete = lbxViewBookings.SelectedItem as Booking; // check the object that is being selected 
+
+            if (bookingToDelete != null)
+            {
+                try
+                {
+                    db.Bookings.Remove(bookingToDelete);
+                    db.SaveChanges();
+                    MessageBox.Show("Booking deleted");
+
+                    // 
+                    //SearchByDate(dbShowBookings.SelectedItem.Value);   
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Sorry, error connecting to the database " + ex.Message);
+                }
+            }
+        }
+
+       
+       
 
         // shows booking for a selected date 
         private void ViewBooking(object sender, SelectedCellsChangedEventArgs e)

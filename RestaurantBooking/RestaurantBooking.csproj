@@ -65,11 +65,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CustomerServiceWindow.xaml.cs">
-      <DependentUpon>CustomerServiceWindow.xaml</DependentUpon>
+    <Compile Include="CustomerSearchResults.xaml.cs">
+      <DependentUpon>CustomerSearchResults.xaml</DependentUpon>
     </Compile>
     <Compile Include="RestaurantData.cs" />
-    <Page Include="CustomerServiceWindow.xaml">
+    <Page Include="CustomerSearchResults.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

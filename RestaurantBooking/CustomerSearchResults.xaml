@@ -1,0 +1,22 @@
+﻿<Window x:Class="RestaurantBooking.CustomerSearchResults"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantBooking"
+        mc:Ignorable="d"
+        Title="CustomerSearchResults" Height="450" Width="800">
+    <Grid>
+        <Label Content="Matching Customers" HorizontalAlignment="Left" Margin="24,27,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Create New Customer" HorizontalAlignment="Left" Margin="400,27,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="24,84,421,115"/>
+        <Button x:Name="btnCreateBooking" Content="Create Booking" HorizontalAlignment="Left" Margin="532,375,0,0" VerticalAlignment="Top" Height="32" Width="145" Click="btnCreateBooking_Click"/>
+        <TextBox x:Name="tbxName" HorizontalAlignment="Left" Margin="412,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280"/>
+        <TextBox x:Name="tbxNumber" HorizontalAlignment="Left" Margin="412,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280"/>
+        <Label Content="Date of booking - " HorizontalAlignment="Left" Margin="412,217,0,0" VerticalAlignment="Top" Width="123"/>
+        <Label Content="Number of Customers  - " HorizontalAlignment="Left" Margin="412,276,0,0" VerticalAlignment="Top" Width="140"/>
+        <TextBlock x:Name="tblkDateOfBooking" HorizontalAlignment="Left" Margin="567,222,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.535,-0.189" Height="21" Width="89"/>
+        <TextBlock x:Name="tblkNoOfCustomers" HorizontalAlignment="Left" Margin="588,281,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.535,-0.189" Height="21" Width="89"/>
+
+    </Grid>
+</Window>
