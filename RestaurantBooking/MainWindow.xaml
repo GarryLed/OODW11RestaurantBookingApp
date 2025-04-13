@@ -15,8 +15,8 @@
         <TextBox x:Name="tbxNoOfCustomers" HorizontalAlignment="Left" Margin="567,134,0,0" TextWrapping="Wrap" Text="Number of Customers" VerticalAlignment="Top" Width="164" TextChanged="TextBox_TextChanged"/>
         <TextBox x:Name="tbxEnterCustomerName" HorizontalAlignment="Left" Margin="567,189,0,0" TextWrapping="Wrap" Text="Customer Name" VerticalAlignment="Top" Width="164" TextChanged="TextBox_TextChanged"/>
         <TextBox x:Name="tbxGetCustomerNo" HorizontalAlignment="Left" Margin="567,249,0,0" TextWrapping="Wrap" Text="Contact Number" VerticalAlignment="Top" Width="164" TextChanged="TextBox_TextChanged"/>
-        <Button x:Name="btnSearchCustomer" Content="Customer Search" HorizontalAlignment="Left" Margin="592,320,0,0" VerticalAlignment="Top" Width="114"/>
-        <Button x:Name="btnDeleteBooking" Content="Delete Booking" HorizontalAlignment="Left" Margin="385,398,0,0" VerticalAlignment="Top" Width="114"/>
+        <Button x:Name="btnSearchCustomer" Content="Customer Search" HorizontalAlignment="Left" Margin="592,320,0,0" VerticalAlignment="Top" Width="114" Click="btnSearchCustomer_Click"/>
+        <Button x:Name="btnDeleteBooking" Content="Delete Booking" HorizontalAlignment="Left" Margin="385,398,0,0" VerticalAlignment="Top" Width="114" Click="btnDeleteBooking_Click"/>
         <Label Content="Capacity:" HorizontalAlignment="Left" Margin="26,392,0,0" VerticalAlignment="Top"/>
         <Label Content="Bookings:" HorizontalAlignment="Left" Margin="136,392,0,0" VerticalAlignment="Top"/>
         <Label Content="Available:" HorizontalAlignment="Left" Margin="236,392,0,0" VerticalAlignment="Top"/>
