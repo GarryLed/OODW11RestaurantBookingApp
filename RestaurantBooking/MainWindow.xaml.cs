@@ -129,10 +129,6 @@ namespace RestaurantBooking
             {
                 Console.WriteLine("Sorry, error occured when trying to connect to database" + ex.Message);
             }
-            
-            
-            
-
         }
 
         // update ui with refreshing screen 
@@ -147,6 +143,19 @@ namespace RestaurantBooking
             tbxNoOfCustomers.Text = "Number of Customers";
         }
 
-       
+        private void tbxNoOfCustomers_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbxNoOfCustomers.Clear();
+        }
+
+        private void tbxEnterCustomerName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbxEnterCustomerName.Clear();
+        }
+
+        private void tbxGetCustomerNo_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbxGetCustomerNo.Clear();
+        }
     }
 }

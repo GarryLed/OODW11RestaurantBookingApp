@@ -64,10 +64,10 @@ namespace RestaurantBooking
             
         }
 
-
+        // create a new customer button 
         private void btnCreateBooking_Click(object sender, RoutedEventArgs e)
         {
-            if (_customerId == 0)
+            if (_customerId == 0) // if customer does not exist then this block will be executed 
             {
                 Customer customer = new Customer() { Name = tbxName.Text, ContactNumber = tbxNumber.Text };
 
@@ -92,6 +92,13 @@ namespace RestaurantBooking
             db.SaveChanges();
 
             MessageBox.Show("Booking was created");
+
+            // update data on main window 
+            MainWindow main = this.Owner as MainWindow;
+            main.RefreshScreen();
+            main.dpShowBookings.SelectedDate = DateTime.Now;
+            main.dpShowBookings.SelectedDate = _bookingDate;
+            Close(); 
         }
     }
 }
